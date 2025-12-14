@@ -29,9 +29,18 @@ Este pacote controla os motores DC do robô, lê os encoders (com filtro anti-ru
 
     Ponte H (PWM/Direção): Pinos 13, 12 (PWM: ENA, ENB) e 17, 27, 22, 23 (Direção: IN1, IN2, IN3, IN4).
 
-    O que está faltando: definir pinos para o relé e para os módulos infra-vermelhos.
+    O que está faltando: definir pinos para o relé e para os módulos infra-vermelhos e para o medidor de nível de bateria (nem sei como vcs vão trabalhar nisso na real)
     
     ⚠️ IMPORTANTE: quando for configurar os sensores infra-vermelhos, conecte a alimentação no 3.3 v do rasp, não use o de 5V, risco de queimar, já que os GPIOS operam em 3.3 V
     Os infra-vermelhos serão os únicos módulos alimentados pelo rasp.
 
     ⚠️ IMPORTANTE: muitas vezes estamos utilizando fonte externa para ligar o Raspberry. Quando for essa situação, não esqueçam de ligar um jumper para conectar os GNDs das baterias e do Rasp.
+
+=> Como Compilar
+
+    Vá para o diretório raiz do projeto, no nosso caso é: ~/ros2_ws
+    
+    cd ~/ros2_ws
+    colcon build --symlink-install
+    source install/setub.bash
+
