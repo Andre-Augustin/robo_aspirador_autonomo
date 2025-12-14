@@ -1,0 +1,28 @@
+running develop
+running egg_info
+creating my_bot_controller.egg-info
+writing my_bot_controller.egg-info/PKG-INFO
+writing dependency_links to my_bot_controller.egg-info/dependency_links.txt
+writing entry points to my_bot_controller.egg-info/entry_points.txt
+writing requirements to my_bot_controller.egg-info/requires.txt
+writing top-level names to my_bot_controller.egg-info/top_level.txt
+writing manifest file 'my_bot_controller.egg-info/SOURCES.txt'
+reading manifest file 'my_bot_controller.egg-info/SOURCES.txt'
+writing manifest file 'my_bot_controller.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/python3.12/site-packages/my-bot-controller.egg-link (link to .)
+Installing coverage_demo script to /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/my_bot_controller
+Installing driver_motores script to /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/my_bot_controller
+
+Installed /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller
+running symlink_data
+creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/ament_index
+creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/ament_index/resource_index
+creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/ament_index/resource_index/packages
+symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/resource/my_bot_controller -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/ament_index/resource_index/packages
+symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/package.xml -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller
+creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/launch
+symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/launch/slam_navigation.launch.py -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/launch
+creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/config
+symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/config/mapper_params_online_async.yaml -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/config
+symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/config/nav2_params.yaml -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/config

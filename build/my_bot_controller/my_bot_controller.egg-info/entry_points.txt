@@ -1,0 +1,3 @@
+[console_scripts]
+coverage_demo = my_bot_controller.coverage_demo:main
+driver_motores = my_bot_controller.motor_driver:main

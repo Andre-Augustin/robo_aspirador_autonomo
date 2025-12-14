@@ -1,0 +1,1 @@
+/home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver/launch/ydlidar_launch_view.py

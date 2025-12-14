@@ -1,0 +1,92 @@
+[0.130s] Invoking command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake /home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver
+[0.248s] -- The C compiler identification is GNU 13.3.0
+[0.286s] -- The CXX compiler identification is GNU 13.3.0
+[0.299s] -- Detecting C compiler ABI info
+[0.365s] -- Detecting C compiler ABI info - done
+[0.373s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.373s] -- Detecting C compile features
+[0.373s] -- Detecting C compile features - done
+[0.380s] -- Detecting CXX compiler ABI info
+[0.456s] -- Detecting CXX compiler ABI info - done
+[0.464s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.465s] -- Detecting CXX compile features
+[0.465s] -- Detecting CXX compile features - done
+[0.467s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.570s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.618s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.646s] -- Found rclcpp: 28.1.12 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.677s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.687s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.699s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.712s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.765s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.768s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.835s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[0.851s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[0.871s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.923s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[0.963s] -- Found visualization_msgs: 5.3.6 (/opt/ros/jazzy/share/visualization_msgs/cmake)
+[0.983s] -- Found std_srvs: 5.3.6 (/opt/ros/jazzy/share/std_srvs/cmake)
+[0.999s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.077s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.078s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.078s] -- Configured cppcheck include dirs: /home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver/src
+[1.078s] -- Configured cppcheck exclude dirs and/or files: 
+[1.079s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.079s] -- Configured cpplint exclude dirs and/or files: 
+[1.080s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.080s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.080s] -- Added test 'lint_cmake' to check CMake code style
+[1.081s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.081s] -- Added test 'uncrustify' to check C / C++ code style
+[1.081s] -- Configured uncrustify additional arguments: 
+[1.082s] -- Added test 'xmllint' to check XML markup files
+[1.083s] -- Configuring done (0.9s)
+[1.092s] -- Generating done (0.0s)
+[1.095s] -- Build files have been written to: /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver
+[1.102s] Invoked command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake /home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver
+[1.103s] Invoking command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake --build /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver -- -j16 -l16
+[1.150s] [ 25%] [32mBuilding CXX object CMakeFiles/ydlidar_ros2_driver_node.dir/src/ydlidar_ros2_driver_node.cpp.o[0m
+[1.150s] [ 50%] [32mBuilding CXX object CMakeFiles/ydlidar_ros2_driver_client.dir/src/ydlidar_ros2_driver_client.cpp.o[0m
+[3.607s] [ 75%] [32m[1mLinking CXX executable ydlidar_ros2_driver_node[0m
+[3.750s] [ 75%] Built target ydlidar_ros2_driver_node
+[5.377s] [100%] [32m[1mLinking CXX executable ydlidar_ros2_driver_client[0m
+[5.546s] [100%] Built target ydlidar_ros2_driver_client
+[5.554s] Invoked command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake --build /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver -- -j16 -l16
+[5.562s] Invoking command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake --install /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver
+[5.568s] -- Install configuration: ""
+[5.568s] -- Execute custom install script
+[5.568s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/lib/ydlidar_ros2_driver/ydlidar_ros2_driver_node
+[5.573s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/lib/ydlidar_ros2_driver/ydlidar_ros2_driver_client
+[5.581s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/launch/ydlidar.py
+[5.589s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/launch/ydlidar_launch.py
+[5.597s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/launch/ydlidar_launch_view.py
+[5.604s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/G1.yaml
+[5.610s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/G2.yaml
+[5.615s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/G6.yaml
+[5.621s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/GS2.yaml
+[5.627s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/TEA.yaml
+[5.634s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/TG.yaml
+[5.642s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/TminiPro.yaml
+[5.649s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/X2.yaml
+[5.656s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/X4-Pro.yaml
+[5.665s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/X4.yaml
+[5.674s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/ydlidar.yaml
+[5.680s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/startup/initenv.sh
+[5.687s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/config/ydlidar.rviz
+[5.696s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ament_index/resource_index/package_run_dependencies/ydlidar_ros2_driver
+[5.703s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ament_index/resource_index/parent_prefix_path/ydlidar_ros2_driver
+[5.710s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/environment/ament_prefix_path.sh
+[5.716s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/environment/ament_prefix_path.dsv
+[5.727s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/environment/path.sh
+[5.733s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/environment/path.dsv
+[5.743s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/local_setup.bash
+[5.748s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/local_setup.sh
+[5.757s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/local_setup.zsh
+[5.764s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/local_setup.dsv
+[5.773s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.dsv
+[5.779s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ament_index/resource_index/packages/ydlidar_ros2_driver
+[5.787s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/cmake/ydlidar_ros2_driverConfig.cmake
+[5.797s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/cmake/ydlidar_ros2_driverConfig-version.cmake
+[5.805s] -- Symlinking: /home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.xml
+[5.812s] Invoked command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake --install /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver

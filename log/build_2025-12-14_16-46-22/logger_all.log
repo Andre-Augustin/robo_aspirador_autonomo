@@ -1,0 +1,164 @@
+[0.087s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.087s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7afd168126f0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7afd1693b680>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7afd1693b680>>)
+[0.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.111s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/samuel/eraseme/robo_aspirador_autonomo'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extensions ['ignore', 'ignore_ament_install']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extension 'ignore'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extension 'ignore_ament_install'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extensions ['colcon_pkg']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extension 'colcon_pkg'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extensions ['colcon_meta']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extension 'colcon_meta'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extensions ['ros']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(my_bot_controller) by extension 'ros'
+[0.129s] DEBUG:colcon.colcon_core.package_identification:Package 'my_bot_controller' with type 'ros.ament_python' and name 'my_bot_controller'
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extensions ['ignore', 'ignore_ament_install']
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extension 'ignore'
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extension 'ignore_ament_install'
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extensions ['colcon_pkg']
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extension 'colcon_pkg'
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extensions ['colcon_meta']
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extension 'colcon_meta'
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extensions ['ros']
+[0.129s] Level 1:colcon.colcon_core.package_identification:_identify(ydlidar_ros2_driver) by extension 'ros'
+[0.130s] DEBUG:colcon.colcon_core.package_identification:Package 'ydlidar_ros2_driver' with type 'ros.ament_cmake' and name 'ydlidar_ros2_driver'
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'cmake_args' from command line to 'None'
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'cmake_target' from command line to 'None'
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'cmake_clean_first' from command line to 'False'
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'cmake_force_configure' from command line to 'False'
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'ament_cmake_args' from command line to 'None'
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.140s] Level 5:colcon.colcon_core.verb:set package 'my_bot_controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.140s] DEBUG:colcon.colcon_core.verb:Building package 'my_bot_controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller', 'merge_install': False, 'path': '/home/samuel/eraseme/robo_aspirador_autonomo/my_bot_controller', 'symlink_install': True, 'test_result_base': None}
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'cmake_args' from command line to 'None'
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'cmake_target' from command line to 'None'
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'cmake_clean_cache' from command line to 'False'
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'cmake_clean_first' from command line to 'False'
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'cmake_force_configure' from command line to 'False'
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'ament_cmake_args' from command line to 'None'
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'catkin_cmake_args' from command line to 'None'
+[0.141s] Level 5:colcon.colcon_core.verb:set package 'ydlidar_ros2_driver' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.141s] DEBUG:colcon.colcon_core.verb:Building package 'ydlidar_ros2_driver' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver', 'merge_install': False, 'path': '/home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver', 'symlink_install': True, 'test_result_base': None}
+[0.141s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.141s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.142s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/samuel/eraseme/robo_aspirador_autonomo/my_bot_controller' with build type 'ament_python'
+[0.142s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_bot_controller', 'ament_prefix_path')
+[0.143s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.143s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/hook/ament_prefix_path.dsv'
+[0.143s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/hook/ament_prefix_path.sh'
+[0.144s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.146s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver' with build type 'ament_cmake'
+[0.146s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver'
+[0.146s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.273s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/samuel/eraseme/robo_aspirador_autonomo/my_bot_controller'
+[0.273s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.277s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake /home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver
+[0.608s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller': PYTHONPATH=/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/build --no-deps symlink_data
+[0.955s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_bot_controller', 'pythonpath_develop')
+[0.955s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/share/my_bot_controller/hook/pythonpath_develop.dsv'
+[0.956s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller' returned '0': PYTHONPATH=/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/build --no-deps symlink_data
+[0.956s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/share/my_bot_controller/hook/pythonpath_develop.sh'
+[0.957s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller' for CMake module files
+[0.957s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller' for CMake config files
+[0.958s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib'
+[0.958s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/bin'
+[0.958s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/pkgconfig/my_bot_controller.pc'
+[0.958s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/python3.12/site-packages'
+[0.958s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_bot_controller', 'pythonpath')
+[0.958s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/hook/pythonpath.dsv'
+[0.958s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/hook/pythonpath.sh'
+[0.959s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/bin'
+[0.959s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_bot_controller)
+[0.959s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/package.dsv'
+[0.959s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/package.sh'
+[0.960s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/package.bash'
+[0.960s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/package.zsh'
+[0.960s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/colcon-core/packages/my_bot_controller)
+[1.249s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake /home/samuel/eraseme/robo_aspirador_autonomo/ydlidar_ros2_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver
+[1.249s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake --build /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver -- -j16 -l16
+[5.700s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake --build /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver -- -j16 -l16
+[5.708s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake --install /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver
+[5.958s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ydlidar_ros2_driver)
+[5.958s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver' for CMake module files
+[5.958s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/samuel/eraseme/install/my_bot_controller:/opt/ros/jazzy /usr/bin/cmake --install /home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver
+[5.959s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver' for CMake config files
+[5.959s] Level 1:colcon.colcon_core.shell:create_environment_hook('ydlidar_ros2_driver', 'cmake_prefix_path')
+[5.959s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/hook/cmake_prefix_path.dsv'
+[5.959s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/hook/cmake_prefix_path.sh'
+[5.960s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/lib'
+[5.960s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/bin'
+[5.960s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/lib/pkgconfig/ydlidar_ros2_driver.pc'
+[5.960s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/lib/python3.12/site-packages'
+[5.960s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/bin'
+[5.960s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.dsv'
+[5.961s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.sh'
+[5.961s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.bash'
+[5.961s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.zsh'
+[5.961s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/colcon-core/packages/ydlidar_ros2_driver)
+[5.961s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ydlidar_ros2_driver)
+[5.961s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver' for CMake module files
+[5.962s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver' for CMake config files
+[5.962s] Level 1:colcon.colcon_core.shell:create_environment_hook('ydlidar_ros2_driver', 'cmake_prefix_path')
+[5.962s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/hook/cmake_prefix_path.dsv'
+[5.962s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/hook/cmake_prefix_path.sh'
+[5.962s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/lib'
+[5.962s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/bin'
+[5.962s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/lib/pkgconfig/ydlidar_ros2_driver.pc'
+[5.963s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/lib/python3.12/site-packages'
+[5.963s] Level 1:colcon.colcon_core.environment:checking '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/bin'
+[5.963s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.dsv'
+[5.963s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.sh'
+[5.963s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.bash'
+[5.963s] INFO:colcon.colcon_core.shell:Creating package script '/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/package.zsh'
+[5.964s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/samuel/eraseme/robo_aspirador_autonomo/install/ydlidar_ros2_driver/share/colcon-core/packages/ydlidar_ros2_driver)
+[5.964s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[5.964s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[5.964s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[5.964s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[5.967s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[5.967s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[5.967s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[5.970s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[5.970s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/samuel/eraseme/robo_aspirador_autonomo/install/local_setup.sh'
+[5.971s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/samuel/eraseme/robo_aspirador_autonomo/install/_local_setup_util_sh.py'
+[5.972s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/samuel/eraseme/robo_aspirador_autonomo/install/setup.sh'
+[5.973s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/samuel/eraseme/robo_aspirador_autonomo/install/local_setup.bash'
+[5.973s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/samuel/eraseme/robo_aspirador_autonomo/install/setup.bash'
+[5.974s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/samuel/eraseme/robo_aspirador_autonomo/install/local_setup.zsh'
+[5.975s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/samuel/eraseme/robo_aspirador_autonomo/install/setup.zsh'

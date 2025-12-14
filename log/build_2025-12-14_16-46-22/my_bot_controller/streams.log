@@ -1,0 +1,30 @@
+[0.466s] Invoking command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller': PYTHONPATH=/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/build --no-deps symlink_data
+[0.649s] running develop
+[0.751s] running egg_info
+[0.751s] creating my_bot_controller.egg-info
+[0.761s] writing my_bot_controller.egg-info/PKG-INFO
+[0.761s] writing dependency_links to my_bot_controller.egg-info/dependency_links.txt
+[0.761s] writing entry points to my_bot_controller.egg-info/entry_points.txt
+[0.761s] writing requirements to my_bot_controller.egg-info/requires.txt
+[0.761s] writing top-level names to my_bot_controller.egg-info/top_level.txt
+[0.761s] writing manifest file 'my_bot_controller.egg-info/SOURCES.txt'
+[0.781s] reading manifest file 'my_bot_controller.egg-info/SOURCES.txt'
+[0.781s] writing manifest file 'my_bot_controller.egg-info/SOURCES.txt'
+[0.792s] running build_ext
+[0.792s] Creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/python3.12/site-packages/my-bot-controller.egg-link (link to .)
+[0.792s] Installing coverage_demo script to /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/my_bot_controller
+[0.792s] Installing driver_motores script to /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/my_bot_controller
+[0.792s] 
+[0.792s] Installed /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller
+[0.793s] running symlink_data
+[0.793s] creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/ament_index
+[0.793s] creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/ament_index/resource_index
+[0.793s] creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/ament_index/resource_index/packages
+[0.793s] symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/resource/my_bot_controller -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/ament_index/resource_index/packages
+[0.793s] symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/package.xml -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller
+[0.793s] creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/launch
+[0.793s] symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/launch/slam_navigation.launch.py -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/launch
+[0.793s] creating /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/config
+[0.793s] symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/config/mapper_params_online_async.yaml -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/config
+[0.793s] symbolically linking /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/config/nav2_params.yaml -> /home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/share/my_bot_controller/config
+[0.813s] Invoked command in '/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller' returned '0': PYTHONPATH=/home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/samuel/eraseme/robo_aspirador_autonomo/install/my_bot_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/samuel/eraseme/robo_aspirador_autonomo/build/my_bot_controller/build --no-deps symlink_data

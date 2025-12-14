@@ -1,0 +1,11 @@
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/uninstall.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/ydlidar_ros2_driver_uninstall.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/ydlidar_ros2_driver_node.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/ydlidar_ros2_driver_client.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/test.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/edit_cache.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/rebuild_cache.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/list_install_components.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/install.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/install/local.dir
+/home/samuel/eraseme/robo_aspirador_autonomo/build/ydlidar_ros2_driver/CMakeFiles/install/strip.dir
