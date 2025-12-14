@@ -19,7 +19,7 @@ PINO_ENCODER_ESQ = 26
 PINO_ENCODER_DIR = 6
 FILTRO_FORCA = 35  # O nosso "Segura a Onda" pra matar o ruído
 
-# Pinos que ligam na Ponte H (Pra fazer a roda girar)
+# Pinos que ligam na Ponte H
 IN1 = 17
 IN2 = 27
 IN3 = 22
@@ -27,7 +27,34 @@ IN4 = 23
 ENA = 13
 ENB = 12
 
+# --- PINAGEM DO SENSOR IR (NOVO) ---
+PINO_IR_ESQ = 24
+PINO_IR_DIR = 25
+
+# --- CLASSE PARA O SENSOR INFRAVERMELHO (NOVO) ---
+class SensorIR:
+    """
+    Classe para encapsular a leitura de um sensor infravermelho digital (Borda/Desnível).
+    Assume que o sensor retorna HIGH (1) quando está sobre o ar (não detecta borda).
+    """
+    def __init__(self, pino_gpio: int):
+        self._pino = pino_gpio
+        # Configura o pino como ENTRADA.
+        GPIO.setup(self._pino, GPIO.IN) 
+
+    def detectar_borda(self) -> bool:
+        """
+        Lê o estado do sensor.
+        :return: True se uma borda for detectada (leitura HIGH), False caso contrário.
+        """
+        # A lógica comum para detecção de borda é:
+        # HIGH (1) = Não está sobre a superfície = Borda
+        return GPIO.input(self._pino) == GPIO.HIGH
+
+
+# A CLASSE EncoderForte continua a mesma...
 class EncoderForte:
+    # ... (Conteúdo da classe EncoderForte) ...
     """ 
     Essa classe é o vigia do encoder. Ela fica olhando o pino sem parar
     pra garantir que o sinal é verdadeiro e não loucura do motor.
@@ -66,6 +93,8 @@ class EncoderForte:
             # Se a leitura tá igual ao que a gente já sabia, zera o balde.
             # Qualquer tremidinha (ruído) morre aqui.
             self.estabilidade = 0
+# -----------------------------------------------
+
 
 class MotorDriver(Node):
     def __init__(self):
@@ -78,6 +107,11 @@ class MotorDriver(Node):
         # Cria os nossos vigias (Encoders)
         self.enc_esq = EncoderForte(PINO_ENCODER_ESQ)
         self.enc_dir = EncoderForte(PINO_ENCODER_DIR)
+
+        # Cria os nossos Sentinelas (Sensores IR) (NOVO)
+        self.ir_esq = SensorIR(PINO_IR_ESQ)
+        self.ir_dir = SensorIR(PINO_IR_DIR)
+        self.borda_detectada = False # Flag de segurança (NOVO)
         
         # Aqui é onde o robô acha que está no mundo (X, Y e Rotação)
         self.x = 0.0
@@ -90,20 +124,23 @@ class MotorDriver(Node):
         self.prev_ticks_dir = 0
         
         # O ROS precisa ouvir comandos e falar onde estamos
+        # Mudamos o callback do cmd_vel para usar o novo motor_control (NOVO)
         self.sub = self.create_subscription(Twist, 'cmd_vel', self.cmd_vel_callback, 10)
         self.odom_pub = self.create_publisher(Odometry, 'odom', 10)
         self.tf_broadcaster = TransformBroadcaster(self)
         
         # Cria um timer que roda 10 vezes por segundo pra fazer a matemática
         self.timer = self.create_timer(0.1, self.update_odometry)
+
+        # NOVO: Timer para checagem do Sensor IR (Roda mais rápido que a Odometria)
+        self.ir_timer = self.create_timer(0.05, self.monitorar_sensores_ir)
         
         # THREAD PARALELA: O Segredo do Sucesso!
-        # Isso aqui roda numa "pista expressa" separada só pra ler encoder voando
         self.running = True
         self.encoder_thread = threading.Thread(target=self.loop_leitura_encoders)
         self.encoder_thread.start()
 
-        self.get_logger().info("Motor Driver Ligado! Agora com Odometria calibrada.")
+        self.get_logger().info("Motor Driver Ligado! Agora com Sensores IR e Odometria.")
 
     def setup_motores(self):
         # Só avisando pro Rasp que esses pinos são de saída (pra mandar energia)
@@ -117,6 +154,8 @@ class MotorDriver(Node):
         self.pwm_a.start(0)
         self.pwm_b.start(0)
 
+    # ... (loop_leitura_encoders, update_odometry, set_motor e euler_to_quaternion continuam os mesmos) ...
+
     def loop_leitura_encoders(self):
         """ 
         Essa função roda numa realidade paralela (Thread).
@@ -128,6 +167,56 @@ class MotorDriver(Node):
             # Um cochilo de milionésimos de segundo pra CPU não pegar fogo
             time.sleep(0.0001) 
 
+    def monitorar_sensores_ir(self):
+        """
+        (NOVO)
+        Checa o estado dos sensores IR e atualiza a flag de detecção de borda.
+        Se borda for detectada, para o robô.
+        """
+        borda_esq = self.ir_esq.detectar_borda()
+        borda_dir = self.ir_dir.detectar_borda()
+
+        if borda_esq or borda_dir:
+            if not self.borda_detectada:
+                self.borda_detectada = True
+                self.get_logger().warn(f"🚨 BORDA DETECTADA! Esquerda: {borda_esq}, Direita: {borda_dir}. PARANDO ROBÔ.")
+                # Força o robô a parar imediatamente
+                self.set_motor(self.pwm_a, IN1, IN2, 0)
+                self.set_motor(self.pwm_b, IN3, IN4, 0)
+        else:
+            self.borda_detectada = False
+
+
+    def cmd_vel_callback(self, msg):
+        """
+        (ATUALIZADO)
+        Recebe comandos, mas só executa se não houver borda detectada.
+        """
+        linear = msg.linear.x
+        angular = msg.angular.z
+
+        if self.borda_detectada:
+            # Se detectou borda, ignora o comando de movimento e mantém parado
+            vel_esq = 0.0
+            vel_dir = 0.0
+        else:
+            # Mistura pra saber o quanto cada roda tem que girar (Cinemática Diferencial)
+            vel_esq = linear - angular
+            vel_dir = linear + angular
+        
+        # O PULO DO GATO: Avisa o encoder se estamos indo pra frente ou pra trás
+        if vel_esq >= 0: self.enc_esq.direcao = 1
+        else: self.enc_esq.direcao = -1
+            
+        if vel_dir >= 0: self.enc_dir.direcao = 1
+        else: self.enc_dir.direcao = -1
+
+        # Manda ver nos motores! (Mesmo se for zero, precisa atualizar o PWM)
+        self.set_motor(self.pwm_a, IN1, IN2, vel_esq)
+        self.set_motor(self.pwm_b, IN3, IN4, vel_dir)
+
+
+    # ... (update_odometry, set_motor, euler_to_quaternion, __del__, main) ...
     def update_odometry(self):
         # 1. Quanto tempo passou desde a última vez?
         current_time = self.get_clock().now()
@@ -193,27 +282,6 @@ class MotorDriver(Node):
             odom.twist.twist.angular.z = d_theta / dt
         
         self.odom_pub.publish(odom)
-
-    def cmd_vel_callback(self, msg):
-        # Recebeu ordem do teclado ou do cérebro autônomo!
-        linear = msg.linear.x
-        angular = msg.angular.z
-        
-        # Mistura pra saber o quanto cada roda tem que girar (Cinemática Diferencial)
-        vel_esq = linear - angular
-        vel_dir = linear + angular
-        
-        # O PULO DO GATO: Avisa o encoder se estamos indo pra frente ou pra trás
-        # Pq o sensor sozinho não sabe, ele é meio burrinho pra direção.
-        if vel_esq >= 0: self.enc_esq.direcao = 1
-        else: self.enc_esq.direcao = -1
-            
-        if vel_dir >= 0: self.enc_dir.direcao = 1
-        else: self.enc_dir.direcao = -1
-
-        # Manda ver nos motores!
-        self.set_motor(self.pwm_a, IN1, IN2, vel_esq)
-        self.set_motor(self.pwm_b, IN3, IN4, vel_dir)
 
     def set_motor(self, pwm, in_a, in_b, vel):
         # Transforma a velocidade (-1 a 1) em força do motor (0 a 100)
