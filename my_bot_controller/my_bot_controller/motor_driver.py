@@ -7,6 +7,7 @@ import RPi.GPIO as GPIO
 import time
 import math
 import threading
+import SensorIR
 
 # --- MEDIDAS Do ROBÔ ---
 
@@ -35,26 +36,6 @@ PINO_IR_DIR = 25
 TEMPO_RE = 1.0     # Segundos dando ré
 TEMPO_GIRO = 1.5   # Segundos girando no lugar
 VELOCIDADE_EVASAO = 0.5 # Velocidade para ré e giro (entre 0 e 1)
-
-
-# --- CLASSE PARA O SENSOR INFRAVERMELHO ---
-class SensorIR:
-    """
-    Classe para encapsular a leitura de um sensor infravermelho digital (Borda/Desnível).
-    Assume que o sensor retorna HIGH (1) quando está sobre o ar (não detecta borda).
-    """
-    def __init__(self, pino_gpio: int):
-        self._pino = pino_gpio
-        # Configura o pino como ENTRADA.
-        GPIO.setup(self._pino, GPIO.IN) 
-
-    def detectar_borda(self) -> bool:
-        """
-        Lê o estado do sensor.
-        :return: True se uma borda for detectada (leitura HIGH), False caso contrário.
-        """
-        # HIGH (1) = Não está sobre a superfície = Borda
-        return GPIO.input(self._pino) == GPIO.HIGH
 
 
 class EncoderForte:
