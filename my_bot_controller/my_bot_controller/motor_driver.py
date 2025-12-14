@@ -8,7 +8,7 @@ import time
 import math
 import threading
 
-# --- MEDIDAS Do ROBÔ  ---
+# --- MEDIDAS Do ROBÔ ---
 
 DIAMETRO_RODA = 0.065   
 DISTANCIA_RODAS = 0.10  # 10cm entre as rodas
@@ -27,11 +27,17 @@ IN4 = 23
 ENA = 13
 ENB = 12
 
-# --- PINAGEM DO SENSOR IR (NOVO) ---
+# --- PINAGEM DO SENSOR IR ---
 PINO_IR_ESQ = 24
 PINO_IR_DIR = 25
 
-# --- CLASSE PARA O SENSOR INFRAVERMELHO (NOVO) ---
+# --- CONSTANTES DE CONTROLE DE EVASÃO ---
+TEMPO_RE = 1.0     # Segundos dando ré
+TEMPO_GIRO = 1.5   # Segundos girando no lugar
+VELOCIDADE_EVASAO = 0.5 # Velocidade para ré e giro (entre 0 e 1)
+
+
+# --- CLASSE PARA O SENSOR INFRAVERMELHO ---
 class SensorIR:
     """
     Classe para encapsular a leitura de um sensor infravermelho digital (Borda/Desnível).
@@ -47,14 +53,11 @@ class SensorIR:
         Lê o estado do sensor.
         :return: True se uma borda for detectada (leitura HIGH), False caso contrário.
         """
-        # A lógica comum para detecção de borda é:
         # HIGH (1) = Não está sobre a superfície = Borda
         return GPIO.input(self._pino) == GPIO.HIGH
 
 
-# A CLASSE EncoderForte continua a mesma...
 class EncoderForte:
-    # ... (Conteúdo da classe EncoderForte) ...
     """ 
     Essa classe é o vigia do encoder. Ela fica olhando o pino sem parar
     pra garantir que o sinal é verdadeiro e não loucura do motor.
@@ -93,7 +96,6 @@ class EncoderForte:
             # Se a leitura tá igual ao que a gente já sabia, zera o balde.
             # Qualquer tremidinha (ruído) morre aqui.
             self.estabilidade = 0
-# -----------------------------------------------
 
 
 class MotorDriver(Node):
@@ -108,10 +110,15 @@ class MotorDriver(Node):
         self.enc_esq = EncoderForte(PINO_ENCODER_ESQ)
         self.enc_dir = EncoderForte(PINO_ENCODER_DIR)
 
-        # Cria os nossos Sentinelas (Sensores IR) (NOVO)
+        # Cria os nossos Sentinelas (Sensores IR)
         self.ir_esq = SensorIR(PINO_IR_ESQ)
         self.ir_dir = SensorIR(PINO_IR_DIR)
-        self.borda_detectada = False # Flag de segurança (NOVO)
+        
+        # ESTADOS DE CONTROLE DE EVASÃO
+        self.borda_detectada = False
+        self.em_evasao = False
+        self.tempo_inicio_evasao = 0.0
+        self.tempo_inicio_giro = 0.0
         
         # Aqui é onde o robô acha que está no mundo (X, Y e Rotação)
         self.x = 0.0
@@ -124,7 +131,6 @@ class MotorDriver(Node):
         self.prev_ticks_dir = 0
         
         # O ROS precisa ouvir comandos e falar onde estamos
-        # Mudamos o callback do cmd_vel para usar o novo motor_control (NOVO)
         self.sub = self.create_subscription(Twist, 'cmd_vel', self.cmd_vel_callback, 10)
         self.odom_pub = self.create_publisher(Odometry, 'odom', 10)
         self.tf_broadcaster = TransformBroadcaster(self)
@@ -132,7 +138,7 @@ class MotorDriver(Node):
         # Cria um timer que roda 10 vezes por segundo pra fazer a matemática
         self.timer = self.create_timer(0.1, self.update_odometry)
 
-        # NOVO: Timer para checagem do Sensor IR (Roda mais rápido que a Odometria)
+        # Timer para checagem do Sensor IR e Controle de Evasão
         self.ir_timer = self.create_timer(0.05, self.monitorar_sensores_ir)
         
         # THREAD PARALELA: O Segredo do Sucesso!
@@ -154,8 +160,6 @@ class MotorDriver(Node):
         self.pwm_a.start(0)
         self.pwm_b.start(0)
 
-    # ... (loop_leitura_encoders, update_odometry, set_motor e euler_to_quaternion continuam os mesmos) ...
-
     def loop_leitura_encoders(self):
         """ 
         Essa função roda numa realidade paralela (Thread).
@@ -169,54 +173,67 @@ class MotorDriver(Node):
 
     def monitorar_sensores_ir(self):
         """
-        (NOVO)
-        Checa o estado dos sensores IR e atualiza a flag de detecção de borda.
-        Se borda for detectada, para o robô.
+        Checa o estado dos sensores IR e gerencia o estado de EVASÃO.
         """
+        agora = self.get_clock().now().nanoseconds / 1e9
+
         borda_esq = self.ir_esq.detectar_borda()
         borda_dir = self.ir_dir.detectar_borda()
 
-        if borda_esq or borda_dir:
-            if not self.borda_detectada:
-                self.borda_detectada = True
-                self.get_logger().warn(f"🚨 BORDA DETECTADA! Esquerda: {borda_esq}, Direita: {borda_dir}. PARANDO ROBÔ.")
-                # Força o robô a parar imediatamente
+        # 1. ENTRAR EM ESTADO DE EVASÃO
+        if (borda_esq or borda_dir) and not self.em_evasao:
+            self.em_evasao = True
+            self.borda_detectada = True
+            self.tempo_inicio_evasao = agora
+            self.get_logger().warn(f"🚨 BORDA DETECTADA! Iniciando EVASÃO. Esquerda: {borda_esq}, Direita: {borda_dir}.")
+        
+        # 2. EXECUTAR EVASÃO
+        if self.em_evasao:
+            tempo_decorrido = agora - self.tempo_inicio_evasao
+            
+            # Fase 1: Dar Ré
+            if tempo_decorrido < TEMPO_RE:
+                # Da ré no robô (Velocidade negativa)
+                self.set_motor(self.pwm_a, IN1, IN2, -VELOCIDADE_EVASAO) 
+                self.set_motor(self.pwm_b, IN3, IN4, -VELOCIDADE_EVASAO)
+
+            # Fase 2: Girar no Lugar (Procurar nova trajetória)
+            elif tempo_decorrido < (TEMPO_RE + TEMPO_GIRO):
+                # Se ainda não definimos a hora de início do giro, definimos agora
+                if tempo_decorrido >= TEMPO_RE and self.tempo_inicio_giro == 0.0:
+                    self.tempo_inicio_giro = agora
+                    
+                    # 1.0 = Gira à esquerda (angular positiva), -1.0 = Gira à direita (angular negativa)
+                    self.direcao_giro = 1.0 
+                    
+                    if borda_esq and not borda_dir:
+                        # Se só a esquerda detectou, gira para a direita
+                        self.direcao_giro = -1.0
+                    elif borda_dir and not borda_esq:
+                        # Se só a direita detectou, gira para a esquerda
+                        self.direcao_giro = 1.0
+                
+                # Executa o giro
+                vel_giro = VELOCIDADE_EVASAO * self.direcao_giro
+                
+                # Para girar no lugar: Rodas em direções opostas
+                # Roda Esquerda (IN1, IN2) recebe o oposto do giro: -vel_giro
+                # Roda Direita (IN3, IN4) recebe o valor do giro: vel_giro
+                self.set_motor(self.pwm_a, IN1, IN2, -vel_giro) 
+                self.set_motor(self.pwm_b, IN3, IN4, vel_giro)
+
+            # Fase 3: Saída do Estado de Evasão
+            else:
+                self.em_evasao = False
+                self.borda_detectada = False
+                self.tempo_inicio_evasao = 0.0
+                self.tempo_inicio_giro = 0.0
+                self.get_logger().info("✅ EVASÃO CONCLUÍDA. Retornando ao controle normal.")
+                # Força uma parada final para garantir transição suave
                 self.set_motor(self.pwm_a, IN1, IN2, 0)
                 self.set_motor(self.pwm_b, IN3, IN4, 0)
-        else:
-            self.borda_detectada = False
 
 
-    def cmd_vel_callback(self, msg):
-        """
-        (ATUALIZADO)
-        Recebe comandos, mas só executa se não houver borda detectada.
-        """
-        linear = msg.linear.x
-        angular = msg.angular.z
-
-        if self.borda_detectada:
-            # Se detectou borda, ignora o comando de movimento e mantém parado
-            vel_esq = 0.0
-            vel_dir = 0.0
-        else:
-            # Mistura pra saber o quanto cada roda tem que girar (Cinemática Diferencial)
-            vel_esq = linear - angular
-            vel_dir = linear + angular
-        
-        # O PULO DO GATO: Avisa o encoder se estamos indo pra frente ou pra trás
-        if vel_esq >= 0: self.enc_esq.direcao = 1
-        else: self.enc_esq.direcao = -1
-            
-        if vel_dir >= 0: self.enc_dir.direcao = 1
-        else: self.enc_dir.direcao = -1
-
-        # Manda ver nos motores! (Mesmo se for zero, precisa atualizar o PWM)
-        self.set_motor(self.pwm_a, IN1, IN2, vel_esq)
-        self.set_motor(self.pwm_b, IN3, IN4, vel_dir)
-
-
-    # ... (update_odometry, set_motor, euler_to_quaternion, __del__, main) ...
     def update_odometry(self):
         # 1. Quanto tempo passou desde a última vez?
         current_time = self.get_clock().now()
@@ -282,6 +299,34 @@ class MotorDriver(Node):
             odom.twist.twist.angular.z = d_theta / dt
         
         self.odom_pub.publish(odom)
+
+    def cmd_vel_callback(self, msg):
+        """
+        Recebe comandos, mas é BLOQUEADO se o robô estiver em estado de EVASÃO.
+        """
+        # Se estiver em evasão, a lógica do monitorar_sensores_ir está no controle.
+        if self.em_evasao:
+            # Apenas registra o último comando recebido, mas não o executa.
+            return
+        
+        # Caso contrário, executa o comando normalmente
+        linear = msg.linear.x
+        angular = msg.angular.z
+        
+        # Mistura pra saber o quanto cada roda tem que girar (Cinemática Diferencial)
+        vel_esq = linear - angular
+        vel_dir = linear + angular
+        
+        # O PULO DO GATO: Avisa o encoder se estamos indo pra frente ou pra trás
+        if vel_esq >= 0: self.enc_esq.direcao = 1
+        else: self.enc_esq.direcao = -1
+            
+        if vel_dir >= 0: self.enc_dir.direcao = 1
+        else: self.enc_dir.direcao = -1
+
+        # Manda ver nos motores!
+        self.set_motor(self.pwm_a, IN1, IN2, vel_esq)
+        self.set_motor(self.pwm_b, IN3, IN4, vel_dir)
 
     def set_motor(self, pwm, in_a, in_b, vel):
         # Transforma a velocidade (-1 a 1) em força do motor (0 a 100)
