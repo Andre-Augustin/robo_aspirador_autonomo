@@ -1,0 +1,30 @@
+slam_toolbox:
+  ros__parameters:
+    # Modo de operação
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    ceres_preconditioner: SCHUR_JACOBI
+    ceres_trust_strategy: LEVENBERG_MARQUARDT
+    
+    # Tópicos e Frames (Essencial verificar se batem com seu código da Fase 1 e 2)
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link
+    scan_topic: /scan
+    mode: mapping # Mapeamento contínuo
+
+    # Configurações do Mapa
+    map_file_name: serial_map
+    map_start_pose: [0.0, 0.0, 0.0]
+    map_resolution: 0.05 # 5cm por pixel (padrão de indústria)
+    
+    # Processamento (Ajustado para Raspberry Pi 4)
+    transform_publish_period: 0.02 # 50Hz
+    map_update_interval: 5.0
+    resolution: 0.05
+    max_laser_range: 12.0 # Verifique o alcance máximo do seu YDLidar
+    minimum_time_interval: 0.5
+    transform_timeout: 0.2
+    tf_buffer_duration: 30.
+    stack_size_to_use: 40000000 # Aumentar buffer de memória
+    enable_interactive_mode: true
