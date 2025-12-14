@@ -20,10 +20,10 @@ PINO_ENCODER_DIR = 6
 FILTRO_FORCA = 35  # O nosso "Segura a Onda" pra matar o ruído
 
 # Pinos que ligam na Ponte H (Pra fazer a roda girar)
-IN1 = 17
-IN2 = 27
-IN3 = 22
-IN4 = 23
+IN1 = 27
+IN2 = 17
+IN3 = 23
+IN4 = 22
 ENA = 13
 ENB = 12
 
