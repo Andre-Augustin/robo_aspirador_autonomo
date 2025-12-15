@@ -57,7 +57,7 @@ class EncoderForte:
         if leitura != self.estado_validado:
             self.estabilidade += 1
 
-            if self.estabilidade >= FILTRO_FORCA:
+            if self.estabilidade >= FILTRO_FORCA:   
                 self.estado_validado = leitura
                 self.estabilidade = 0
 
