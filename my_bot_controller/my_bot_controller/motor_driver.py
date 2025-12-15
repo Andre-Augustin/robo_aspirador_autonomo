@@ -261,14 +261,19 @@ class MotorDriver(Node):
     #   Euler -> Quaternion
     # --------------------------
     def euler_to_quaternion(self, roll, pitch, yaw):
-        qx = math.sin(roll/2) * math.cos(pitch/2) * math.cos(yaw/2) - \
-             math.cos(roll/2) * math.sin(pitch/2) * math.sin(yaw/2)
-        qy = math.cos(roll/2) * math.sin(pitch/2) * math.cos(yaw/2) + \
-             math.sin(roll/2) * math.cos(pitch/2) * math.sin(yaw/2)
-        qz = math.cos(roll/2) * math.cos(pitch/2) * math.sin(yaw/2) - \
-             math.sin(roll/2) * math.sin(pitch/2) * math.cos(yaw/2)
-        qw = math.cos(roll/2) * math.cos(pitch/2) * math.cos(yaw/2) + \
-             math.sin(roll/2) * math.sin(pitch/2) * math.sin(yaw/2)
+        # Usando parênteses para evitar erros de indentação com barra invertida
+        qx = (math.sin(roll/2) * math.cos(pitch/2) * math.cos(yaw/2) - 
+              math.cos(roll/2) * math.sin(pitch/2) * math.sin(yaw/2))
+        
+        qy = (math.cos(roll/2) * math.sin(pitch/2) * math.cos(yaw/2) + 
+              math.sin(roll/2) * math.cos(pitch/2) * math.sin(yaw/2))
+        
+        qz = (math.cos(roll/2) * math.cos(pitch/2) * math.sin(yaw/2) - 
+              math.sin(roll/2) * math.sin(pitch/2) * math.cos(yaw/2))
+        
+        qw = (math.cos(roll/2) * math.cos(pitch/2) * math.cos(yaw/2) + 
+              math.sin(roll/2) * math.sin(pitch/2) * math.sin(yaw/2))
+        
         return Quaternion(x=qx, y=qy, z=qz, w=qw)
 
     # --------------------------
